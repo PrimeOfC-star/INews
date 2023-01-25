@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const News = (props) => {
   // const [pageSize, setPageSize] = useState(12);
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+  //const proxyUrl = "https://cors-anywhere.herokuapp.com/"
   const [articles, setArticle] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -14,11 +14,11 @@ const News = (props) => {
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
+  //,{headers: new Headers({"X-Requestes-With": "wkgfhbebbebefjkbchjbeh"})}
   const updateNews = async () => {
-    const url = `${proxyUrl}http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apikey=6c7a4d881829415aabe5cddab74b49e9&page=${page}&pageSize=${props.pageSize}`;
+    const url = `http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apikey=6c7a4d881829415aabe5cddab74b49e9&page=${page}&pageSize=${props.pageSize}`;
     setLoading(true);
-    let data = await fetch(url,{headers: new Headers({"X-Requestes-With": "wkgfhbebbebefjkbchjbeh"})});
+    let data = await fetch(url);
     let parsedData = await data.json();
     setArticle(parsedData.articles);
     setTotalResults(parsedData.totalResults);
