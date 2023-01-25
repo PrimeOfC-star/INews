@@ -16,9 +16,9 @@ const News = (props) => {
   };
 
   const updateNews = async () => {
-    const url = `${proxyUrl}https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apikey=6c7a4d881829415aabe5cddab74b49e9&page=${page}&pageSize=${props.pageSize}`;
+    const url = `${proxyUrl}http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apikey=6c7a4d881829415aabe5cddab74b49e9&page=${page}&pageSize=${props.pageSize}`;
     setLoading(true);
-    let data = await fetch(url);
+    let data = await fetch(url,{headers: new Headers({"X-Requestes-With": "wkgfhbebbebefjkbchjbeh"})});
     let parsedData = await data.json();
     setArticle(parsedData.articles);
     setTotalResults(parsedData.totalResults);
